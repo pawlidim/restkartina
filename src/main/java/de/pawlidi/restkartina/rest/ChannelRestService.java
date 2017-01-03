@@ -28,7 +28,7 @@ import retrofit2.http.Query;
  * @author pawlidim
  *
  */
-public interface ChannelService {
+public interface ChannelRestService {
 
 	/**
 	 * 

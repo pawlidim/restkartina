@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.pawlidi.restkartina.rest;
+package de.pawlidi.restkartina;
 
-import java.util.Date;
+import java.io.Serializable;
 
-import de.pawlidi.restkartina.dto.epg.EPGResponse;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import de.pawlidi.restkartina.rest.SystemRestService;
 
-public interface EPGService {
+class SystemService implements Serializable {
 
-	@GET("{format}/epg")
-	Call<EPGResponse> epg(@Path("format") String format, @Query("cid") Long cid, @Query("day") Date day);
+	private SystemRestService service;
+
+	protected SystemService(KartinaTV kartinaTV) {
+		this.service = kartinaTV.getRetrofit().create(SystemRestService.class);
+	}
 
 }

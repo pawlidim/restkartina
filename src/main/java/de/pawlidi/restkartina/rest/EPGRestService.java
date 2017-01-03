@@ -15,14 +15,17 @@
  */
 package de.pawlidi.restkartina.rest;
 
-import de.pawlidi.restkartina.dto.system.SystemResponse;
+import java.util.Date;
+
+import de.pawlidi.restkartina.dto.epg.EPGResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
-public interface SystemService {
+public interface EPGRestService {
 
-	@GET("{format}/speedtest")
-	Call<SystemResponse> speedtest(@Path("format") String format);
+	@GET("{format}/epg")
+	Call<EPGResponse> epg(@Path("format") String format, @Query("cid") Long cid, @Query("day") Date day);
 
 }

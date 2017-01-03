@@ -17,31 +17,14 @@ package de.pawlidi.restkartina;
 
 import java.io.Serializable;
 
-import de.pawlidi.restkartina.rest.utils.RetrofitFactory;
-import retrofit2.Retrofit;
+import de.pawlidi.restkartina.rest.ClientRestService;
 
-public class KartinaTV implements Serializable {
+class ClientService implements Serializable {
 
-	private static final String API = "https://iptv.kartina.tv/api";
-	private static final String API_FORMAT_XML = "xml";
-	private static final String API_FORMAT_JSON = "json";
+	private ClientRestService service;
 
-	private Retrofit retrofit;
-
-	/**
-	 * 
-	 */
-	public KartinaTV() {
-		super();
-		retrofit = RetrofitFactory.createRetrofit(API);
-	}
-
-	protected Retrofit getRetrofit() {
-		return retrofit;
-	}
-
-	public void login(final String login, final String password) {
-
+	protected ClientService(KartinaTV kartinaTV) {
+		this.service = kartinaTV.getRetrofit().create(ClientRestService.class);
 	}
 
 }

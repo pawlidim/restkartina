@@ -27,7 +27,7 @@ import retrofit2.http.Query;
  * @author pawlidim
  *
  */
-public interface VODService {
+public interface VODRestService {
 
 	/**
 	 * 
