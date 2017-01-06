@@ -15,9 +15,13 @@
  */
 package de.pawlidi.restkartina;
 
+import java.io.IOException;
 import java.io.Serializable;
 
+import de.pawlidi.restkartina.dto.channel.ChannelResponse;
 import de.pawlidi.restkartina.rest.ChannelRestService;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * @author pawlidim
@@ -25,9 +29,25 @@ import de.pawlidi.restkartina.rest.ChannelRestService;
  */
 class ChannelService implements Serializable {
 
-	private ChannelRestService service;
+	private final ChannelRestService service;
+	private final String format;
 
 	protected ChannelService(KartinaTV kartinaTV) {
 		this.service = kartinaTV.getRetrofit().create(ChannelRestService.class);
+		this.format = kartinaTV.getFormat();
+	}
+
+	public ChannelResponse list() {
+		Call<ChannelResponse> call = service.channelList(format, null, null);
+		try {
+			Response<ChannelResponse> response = call.execute();
+			if (response.isSuccessful()) {
+				return response.body();
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -110,7 +110,7 @@ public final class GsonConverter extends Converter.Factory implements IConverter
 			JsonWriter jsonWriter = gson.newJsonWriter(writer);
 			adapter.write(jsonWriter, value);
 			jsonWriter.close();
-			return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), buffer.readByteString());
+			return RequestBody.create(MediaType.parse(MEDIA_TYPE), buffer.readByteString());
 		}
 
 	}

@@ -201,10 +201,10 @@ public class ClientResponse extends RestDTO {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Client)) {
+		if (!(obj instanceof ClientResponse)) {
 			return false;
 		}
-		Client other = (Client) obj;
+		ClientResponse other = (ClientResponse) obj;
 		if (messages == null) {
 			if (other.messages != null) {
 				return false;

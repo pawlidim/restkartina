@@ -13,19 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.pawlidi.restkartina.rest.converter;
+package de.pawlidi.restkartina;
 
-/**
- * 
- * @author PAWLIDIM
- *
- */
-public interface IConverter {
+import static org.junit.Assert.assertTrue;
 
-	/** */
-	static final String UTF_8 = "UTF-8";
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-	/** */
-	static final String MEDIA_TYPE = "application/json; charset=UTF-8";
+public class KartinaTVTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testLogin() {
+		KartinaTV kartinaTV = new KartinaTV();
+		kartinaTV.login("", "");
+		assertTrue(true);
+	}
 
 }

@@ -95,7 +95,7 @@ public class PrimitiveConverter extends Converter.Factory implements IConverter 
 			return new Converter<String, RequestBody>() {
 				@Override
 				public RequestBody convert(String value) throws IOException {
-					return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), value);
+					return RequestBody.create(MediaType.parse(MEDIA_TYPE), value);
 				}
 			};
 		} else if (type.equals(Integer.class)) {
@@ -103,7 +103,7 @@ public class PrimitiveConverter extends Converter.Factory implements IConverter 
 				@Override
 				public RequestBody convert(Integer value) throws IOException {
 					String strValue = (value != null ? "" + value : null);
-					return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), "" + strValue);
+					return RequestBody.create(MediaType.parse(MEDIA_TYPE), "" + strValue);
 				}
 			};
 		} else if (type.equals(Double.class)) {
@@ -111,7 +111,7 @@ public class PrimitiveConverter extends Converter.Factory implements IConverter 
 				@Override
 				public RequestBody convert(Double value) throws IOException {
 					String strValue = (value != null ? "" + value : null);
-					return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), "" + strValue);
+					return RequestBody.create(MediaType.parse(MEDIA_TYPE), "" + strValue);
 				}
 			};
 		} else if (type.equals(Float.class)) {
@@ -119,7 +119,7 @@ public class PrimitiveConverter extends Converter.Factory implements IConverter 
 				@Override
 				public RequestBody convert(Float value) throws IOException {
 					String strValue = (value != null ? "" + value : null);
-					return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), "" + strValue);
+					return RequestBody.create(MediaType.parse(MEDIA_TYPE), "" + strValue);
 				}
 			};
 		} else if (type.equals(Boolean.class)) {
@@ -127,7 +127,7 @@ public class PrimitiveConverter extends Converter.Factory implements IConverter 
 				@Override
 				public RequestBody convert(Boolean value) throws IOException {
 					String strValue = (value != null ? "" + value : null);
-					return RequestBody.create(MediaType.parse(GIT_HUB_MEDIA_TYPE), "" + strValue);
+					return RequestBody.create(MediaType.parse(MEDIA_TYPE), "" + strValue);
 				}
 			};
 		}

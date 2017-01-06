@@ -15,16 +15,42 @@
  */
 package de.pawlidi.restkartina;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.UUID;
 
+import de.pawlidi.restkartina.dto.client.ClientResponse;
 import de.pawlidi.restkartina.rest.ClientRestService;
+import de.pawlidi.restkartina.rest.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Response;
 
 class ClientService implements Serializable {
 
-	private ClientRestService service;
+	private final ClientRestService service;
+	private final String format;
 
 	protected ClientService(KartinaTV kartinaTV) {
 		this.service = kartinaTV.getRetrofit().create(ClientRestService.class);
+		this.format = kartinaTV.getFormat();
+	}
+
+	public ClientResponse login(final String login, final String password) {
+		if (Utils.isBlank(login) || Utils.isBlank(password)) {
+			return null;
+		}
+		Call<ClientResponse> call = service.login(format, login, password, "de.pawlidi.restkartina",
+				UUID.randomUUID().toString());
+		try {
+			Response<ClientResponse> response = call.execute();
+			if (response.isSuccessful()) {
+				return response.body();
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
